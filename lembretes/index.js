@@ -22,7 +22,7 @@ app.get('/lembretes', (req, res) => {
     "id": 2,
     "texto": "Cinema"
   }
-}
+} 
 */
 app.post('/lembretes', (req, res) => {
   idAtual++;
