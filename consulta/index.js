@@ -11,7 +11,13 @@ const funcoes = {
     const observacoes = baseConsulta[observacao.lembreteId]['observacoes'] || []
     observacoes.push(observacao)
     baseConsulta[observacao.lembreteId]['observacoes'] = observacoes
-
+  },
+  ObservacaoAtualizada: (observacao) => {
+    const observacoes = 
+      baseConsulta[observacao.lembreteId]['observacoes']
+    const indice = 
+      observacoes.findIndex(o => o.id === observacao.id)
+    observacoes[indice] = observacao
   }
 }
 
@@ -26,9 +32,9 @@ app.get('/lembretes', (req, res) => {
 app.post('/eventos', (req, res) => {
   try{
     funcoes[req.body.tipo](req.body.dados)
-    res.send({msg: 'ok'})
   }
   catch(e){}
+  res.send({msg: 'ok'})
 } )
 
 const { MSS_CONSULTA_PORTA } = process.env

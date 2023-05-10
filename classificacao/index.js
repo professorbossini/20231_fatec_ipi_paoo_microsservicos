@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const axios = require ('axios')
 const app = express()
 app.use(express.json())
 const { MSS_CLASSIFICACAO_PORTA } = process.env
@@ -17,9 +18,9 @@ const funcoes = {
 app.post('/eventos', (req, res) => {
   try{
     funcoes[req.body.tipo](req.body.dados)
-    res.status(200).send({msg: 'ok'})
   }
   catch (e){}
+  res.status(200).send({msg: 'ok'})
 })
 
 
