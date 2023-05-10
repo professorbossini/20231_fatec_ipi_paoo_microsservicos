@@ -20,6 +20,9 @@ app.post('/eventos', (req, res) => {
   //direcionando o evento para o mss de consulta
   axios.post('http://localhost:6000/eventos', evento)
 
+  //direcionando o evento para o mss de classificação
+  axios.post('http://localhost:7000/eventos', evento)
+
   res.status(200).send({msg: 'ok'})
 })
 
